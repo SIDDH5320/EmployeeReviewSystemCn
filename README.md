@@ -48,7 +48,7 @@ For development, you will need Node.js installed in your environment.
 ## Getting Started
 1. **Clone Git Repo**
     ```bash
-    git clone https://github.com/SIDDH5320/CareercampPlacementcell.github.io.git
+    git clone (https://github.com/SIDDH5320/EmployeeReviewSystemCn.git)
     ```
 
 2. **Install NPM dependencies**
