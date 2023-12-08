@@ -1,0 +1,30 @@
+<!-- This is the link to the sign.css stylesheet -->
+<link rel="stylesheet" href="/css/sign.css">
+
+<!-- Main container for the sign-up form -->
+<div class="mainContainer">
+    <!-- Company logo section -->
+    <div class="companyLogo">
+        <img src="../images/laptop.png" alt="Company Logo">
+    </div>
+
+    <!-- Form input section -->
+    <div class="formInput">
+        <h1>Welcome</h1>
+        <!-- Sign-up form -->
+        <form method="POST" action="/users/addEmployee">
+            <!-- Input fields for name, email, password, and confirm password -->
+            <input type="Name" name="name" placeholder="Enter name" required><br>
+            <input type="email" name="email" placeholder="Enter email" required><br>
+            <input type="password" name="password" placeholder="Enter password" required><br>
+            <input type="password" name="confirmPassword" placeholder="Confirm password" required><br>
+
+            <!-- Submit button -->
+            <div class='buttons'>
+                <div id="addemp" class="submitButtons" style="width: 60%;">
+                    <button type="submit">SignUp</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

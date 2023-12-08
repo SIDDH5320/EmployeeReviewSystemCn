@@ -1,0 +1,48 @@
+<!-- Link to the admin.css stylesheet -->
+<link rel="stylesheet" href="/css/admin.css">
+
+<!-- Heading for the employee list -->
+<h5 class="text-center mt-3">All Employees List</h5>
+
+<!-- Main container for the employee list table -->
+<div class="container mt-4">
+    <!-- Table to display employee information -->
+    <table class="table table-hover">
+        <!-- Table header with column names -->
+        <thead>
+          <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Admin</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through employees to populate table rows -->
+          <% for(let i = 0; i<employes.length; i++) {%>
+            <tr>
+              <th scope="row"><%= i+1 %></th>
+              <td> <%= employes[i].name%> </td>
+              <td> <%= employes[i].email%> </td>
+              <td> <%= employes[i].password%> </td>
+              <td> <%= employes[i].isAdmin%> </td>
+              <!-- Check if the logged-in user is not the current employee -->
+              <% if(locals.user.id != employes[i]._id) {%>
+                <!-- Display Delete button with a link to delete the employee -->
+                <td> 
+                  <a href="/admin/deleteEmployee/<%= employes[i]._id %>" class="btn btn-md">Delete</a>
+                </td>
+              <%}else{%>
+                <!-- Display disabled Delete button if the logged-in user is the current employee -->
+                <td>
+                  <a href="" class="btn btn-md" disabled>Delete</a>
+                </td>
+              <%}%> 
+            </tr>  
+          <%}%>
+          
+        </tbody>
+    </table>
+</div>

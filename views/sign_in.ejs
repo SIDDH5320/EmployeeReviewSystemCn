@@ -1,0 +1,35 @@
+<!-- Link to the sign.css stylesheet -->
+<link rel="stylesheet" href="/css/sign.css">
+
+<!-- Main container for the sign-in form -->
+<div class="mainContainer">
+    <!-- Company logo section -->
+    <div class="companyLogo">
+        <img src="../images/laptop.png" alt="Company Logo">
+    </div>
+
+    <!-- Form input section -->
+    <div class="formInput">
+        <h1>Welcome</h1>
+        <!-- Sign-in form -->
+        <form method="POST" action="/users/create-session">
+            <!-- Input fields for email and password -->
+            <input type="email" name="email" placeholder="Enter email" required><br>
+            <input type="password" name="password" placeholder="Enter password" required><br>
+            
+            <!-- Buttons section -->
+            <div class='buttons'>
+                <!-- Forgot Password link -->
+                <div class="forgetPassword"><a href="/users/forgetPassword">Forgot Password?</a></div>
+                <!-- Sign In button -->
+                <div class='submitButtons'><button type="submit">Sign In</button></div>
+            </div>
+
+            <!-- Additional information and registration link -->
+            <div class="extraStuff">
+                <small>Don't have an account?</small>
+                <a href="/users/sign-up">Register User</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata for character set and rendering compatibility -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Link to the home.css stylesheet -->
+    <link rel="stylesheet" href="css/home.css">
+    <!-- Viewport configuration for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the web page -->
+    <title>ERS</title>
+</head>
+<body>
+    <!-- Check if a user is logged in -->
+    <%if(locals.user){%>
+        <div class="outerDiv">    
+            <!-- Check if the logged-in user is not an admin -->
+            <% if(!locals.user.isAdmin){ %>
+                <!-- Admin password form for non-admin users -->
+                <div class="adminPass">
+                    <form action="/users/makeAdmin" method="post">
+                        <input name="admin_password" type="password" placeholder="Password">
+                        <button type="submit" class="submitHomeButton"> Enter as Admin</button>
+                    </form>
+                </div>
+            <%}%>    
+
+            <!-- Text and information section -->
+            <div class="home-box">
+                <i class="text-colr">Welcome to Employee Review System that helps the admin identify top-performing employees by assigning co-worker reviews. It also allows the admin to promote employees to admin status and add new employees. This system creates a culture of accountability and promotes excellence, leading to better hiring decisions and a stronger workforce.</i>
+                <hr>
+            </div>
+
+            <!-- Employee review section -->
+            <div class="home-box">
+                <div class="employeereview">Kindly, review your co-employees<img src="../images/rating.webp"><br>
+                <i><h6>This task is assigned by the Admin</h6></i>
+                </div>
+
+                <!-- Review boxes for each recipient -->
+                <div class="reviewBox">
+                    <% for(let i = 0 ;i<recipent.length ; i++ ) {%>
+                        <%if(recipent[i] != null) {%>
+                            <div class="outerBox">
+                                <h6>
+                                    To : <%= recipent[i].name%>
+                                </h6>
+                                <div class="innerBox">
+                                    <!-- Form for submitting a new review -->
+                                    <form action="/reviews/newReview/<%= recipent[i]._id %>" method="get">
+                                        <textarea class="formClass" placeholder="Review, here !" name="newReview" rows="5"
+                                        id="floatingTextarea2"></textarea>
+                                        <br>
+                                        <button type="submit" class="submitHomeButton"> Submit </button>
+                                    </form>
+                                </div>
+                            </div>
+                        <%}%>
+                    <%}%>   
+                </div>
+            </div>
+
+            <!-- My reviews section -->
+            <div class="home-box">
+                <div class="myreview">My Reviews <img src="../images/rating.webp"></div>
+                <div class="reviewBox">
+                    <!-- Display reviews from the user -->
+                    <div class="card-out">
+                        <% for(let review of reviews ) {%>
+                            <div class="in-card">
+                                <h5 class="cls-txt">Message : <%= review.content %> </h5>
+                                <p class="cls-txt">From : <%= review.name %> </p>
+                            </div>
+                        <%}%>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%}%>
+</body>
+</html>

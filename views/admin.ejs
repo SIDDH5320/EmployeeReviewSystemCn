@@ -1,0 +1,84 @@
+<!-- Link to the admin.css stylesheet -->
+<link rel="stylesheet" href="/css/admin.css">
+
+<!-- Main container for the admin panel -->
+<div class="container-fluid mt-2">
+    <!-- Heading for the admin panel -->
+    <div class="heading">Kindly, assign Recipient and Reviewer</div>
+
+    <!-- Review container section -->
+    <div class="reviewContainer">
+
+        <!-- Reviewer section for assigning tasks -->
+        <div class="reviewer">
+            <!-- Text heading for assigning tasks -->
+            <div class="text-center">
+                Assign Task
+            </div>
+            <!-- Horizontal line -->
+            <hr>
+
+            <!-- Form for setting reviewers -->
+            <form action="/admin/setReviewes" method="POST" class="mt-1 card-body">
+                <!-- Set Reviewer dropdown -->
+                <div>
+                    Set Reviewer
+                    <select class="form-select form-select" aria-label="Default select example" name="sender">
+                        <option selected>Sender</option>
+                        <!-- Loop through employees for options -->
+                        <% for(let i = 0; i<employe.length ; i++){ %>
+                            <option value=<%= employe[i].id %>> <%= employe[i].name %> </option>
+                        <%}%>    
+                    </select>
+                </div>
+
+                <!-- Reviewee dropdown -->
+                <div class="reviewee">
+                    Select the Recipient Employee
+                    <select class="form-select form-select" aria-label="Default select example" name="reciver">
+                        <option selected>Receiver</option>
+                        <!-- Loop through employees for options -->
+                        <% for(let i = 0; i<employe.length ; i++){ %>
+                            <option value=<%= employe[i].id %>> <%= employe[i].name %> </option>
+                        <%}%>
+                    </select>
+                </div>
+
+                <!-- Submit button -->
+                <div class="submitButtons">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Another review container section -->
+    <div class="reviewContainer">
+        <!-- Reviewer section for making an admin -->
+        <div class="reviewer">
+            <!-- Text heading for making an admin -->
+            <div class="text-center">Make admin to any Employee</div>
+            <!-- Horizontal line -->
+            <hr>
+    
+            <!-- Form for making an admin -->
+            <form method="POST" action="/admin/newAdmin" class="mt-3">
+                <!-- Dropdown for selecting an employee to make admin -->
+                <select class="form-select form-select" aria-label="Default select example" name="selectedUser">
+                    <option selected>Select to make Admin</option>
+                    <!-- Loop through employees for options -->
+                    <% for(let i = 0; i<employe.length ; i++){ %>
+                        <option value=<%= employe[i]._id %>> <%= employe[i].name %> </option>
+                    <%}%>
+                </select>
+    
+                <!-- Submit button -->
+                <div class="submitButtons">
+                    <button type="submit">Submit</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+</div>
